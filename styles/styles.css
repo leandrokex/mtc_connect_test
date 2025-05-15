@@ -50,9 +50,21 @@ body {
   animation: scrollLogos 25s linear infinite;
 }
 
+@media (min-width: 768px) {
+  .logo-track img {
+    height: 60px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .logo-track img {
+    height: 100px;
+  }
+}
+
 .logo-track img {
-  margin: 0 2rem;
-  height: 100px;
+  width: auto;
+  margin: 0 1.5rem;
   object-fit: contain;
 }
 
