@@ -38,34 +38,41 @@ body {
   display: flex;
 }
 
+/* --- DESKTOP --- */
+
 .logo-scroller {
   position: relative;
   overflow: hidden;
   display: block;
-  gap: 2rem;
+  /* apenas uma linha visível */
 }
 
 .logo-track {
   display: flex;
   width: max-content;
   min-width: 200%;
-  animation: scrollLogos 25s linear infinite;
+  /* garante espaço para duplicação */
+  animation: scrollLogos 30s linear infinite;
+  /* velocidade scroll desktop */
 }
 
+.logo-track img {
+  height: 100px;
+  width: auto;
+  margin: 0 1.5rem;
+  /* margem entre imagens */
+  object-fit: contain;
+}
+
+/* Segunda linha escondida no desktop */
 .track-2 {
   display: none;
 }
 
-.logo-track img {
-  width: auto;
-  margin: 0 1.5rem;
-  object-fit: contain;
-  height: 100px;
-}
-
+/* Animação desktop scroll contínuo */
 @keyframes scrollLogos {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
 
   100% {
@@ -73,75 +80,63 @@ body {
   }
 }
 
-/* Mostrar/esconder elementos conforme o ecrã */
-.desktop-only {
-  display: block;
-}
-
-.mobile-only {
-  display: none;
-}
-
-
-/* ===========================
-   SCROLL DE LOGOS — MOBILE
-   =========================== */
+/* --- MOBILE (até 767px) --- */
 
 @media (max-width: 767px) {
   .logo-scroller {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
+    /* espaço entre as duas linhas */
   }
 
   .logo-track {
     width: max-content;
     min-width: 200%;
-    animation-duration: 40s;
-    height: 60px;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
     margin: 0 auto;
+    height: 60px;
   }
 
+  /* Imagens com tamanho e margem iguais nas duas linhas */
   .logo-track img {
     height: 60px;
+    width: auto;
     margin: 0 0.8rem;
+    /* margem mais pequena para mobile */
+    object-fit: contain;
   }
 
+  /* Linha 1 scroll normal e velocidade */
   .track-1 {
-    display: flex;
     animation-name: scrollLogos;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-  }
-
-  .track-2 {
+    animation-duration: 25s;
+    /* velocidade da animação */
     display: flex;
-    animation-name: scrollLogosReverse;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
   }
 
+  /* Linha 2 scroll invertido e velocidade diferente para dinâmica */
+  .track-2 {
+    animation-name: scrollLogosReverse;
+    animation-duration: 15s;
+    /* velocidade da animação */
+    display: flex;
+  }
+
+  /* Animação scroll invertido para a segunda linha */
   @keyframes scrollLogosReverse {
     0% {
       transform: translateX(-50%);
     }
 
     100% {
-      transform: translateX(0%);
+      transform: translateX(0);
     }
   }
-
-  /* Mostrar/esconder no mobile */
-  .desktop-only {
-    display: none;
-  }
-
-  .mobile-only {
-    display: block;
-  }
 }
+
 
 .logo-scroller::before,
 .logo-scroller::after {
