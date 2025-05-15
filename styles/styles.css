@@ -49,21 +49,23 @@ body {
   position: relative;
   overflow: hidden;
   height: 150px;
- 
+
 }
 
 .logo-track {
   display: flex;
   width: max-content;
   animation: scrollLogos 20s linear infinite;
+  align-items: center;
 }
 
 .logo-track img {
   margin: 0 2rem;
-  width: 100px;       /* largura fixa */
-  height: auto;       /* altura ajusta conforme proporção */
+  width: 150px !important;
+  height: auto;
   object-fit: contain;
   flex-shrink: 0;
+
 }
 
 /* Loop contínuo — desliza metade da largura (porque duplicaste os logos) */
