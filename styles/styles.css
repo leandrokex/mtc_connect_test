@@ -38,40 +38,34 @@ body {
   display: flex;
 }
 
-.logo-scroller {
-  position: relative;
+/* Oculta por padrão */
+.desktop-only {
+  display: none;
+}
+
+.mobile-only {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   overflow: hidden;
 }
 
+/* Scroll base */
 .logo-track {
   display: flex;
   width: max-content;
   min-width: 200%;
-  animation: scrollLogos 25s linear infinite;
+  animation: scrollLogos 30s linear infinite;
 }
-
 
 .logo-track img {
   width: auto;
   margin: 0 1.5rem;
   object-fit: contain;
-  height: 40px;
+  height: 100px;
 }
 
-@media (min-width: 768px) {
-  .logo-track img {
-    height: 60px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .logo-track img {
-    height: 100px;
-  }
-}
-
-
-/* Loop contínuo — desliza metade da largura (porque duplicaste os logos) */
+/* Animação padrão */
 @keyframes scrollLogos {
   0% {
     transform: translateX(0%);
@@ -81,6 +75,63 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* --- Mobile only --- */
+@media (max-width: 767px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: flex;
+  }
+
+  .logo-track {
+    animation-duration: 50s;
+    height: 60px;
+    margin: 0 auto;
+  }
+
+  .logo-track img {
+    height: 60px;
+    margin: 0 0.8rem;
+  }
+
+  .track-1 {
+    animation-name: scrollLogos;
+  }
+
+  .track-2 {
+    animation-name: scrollLogosReverse;
+  }
+
+  @keyframes scrollLogosReverse {
+    0% {
+      transform: translateX(-50%);
+    }
+
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+/* --- Desktop only --- */
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  .logo-track img {
+    height: 100px;
+    margin: 0 1.5rem;
+  }
+}
+
 
 .logo-scroller::before,
 .logo-scroller::after {
