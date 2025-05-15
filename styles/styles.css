@@ -60,8 +60,10 @@ body {
 
 .logo-track img {
   margin: 0 2rem;
-  height: 100px;
+  width: 100px;       /* largura fixa */
+  height: auto;       /* altura ajusta conforme proporção */
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* Loop contínuo — desliza metade da largura (porque duplicaste os logos) */
