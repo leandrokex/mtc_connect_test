@@ -38,24 +38,22 @@ body {
   display: flex;
 }
 
-/* Oculta por padrão */
-.desktop-only {
-  display: none;
-}
-
-.mobile-only {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.logo-scroller {
+  position: relative;
   overflow: hidden;
+  display: block;
+  gap: 2rem;
 }
 
-/* Scroll base */
 .logo-track {
   display: flex;
   width: max-content;
   min-width: 200%;
-  animation: scrollLogos 30s linear infinite;
+  animation: scrollLogos 25s linear infinite;
+}
+
+.track-2 {
+  display: none;
 }
 
 .logo-track img {
@@ -65,7 +63,6 @@ body {
   height: 100px;
 }
 
-/* Animação padrão */
 @keyframes scrollLogos {
   0% {
     transform: translateX(0%);
@@ -76,18 +73,31 @@ body {
   }
 }
 
-/* --- Mobile only --- */
-@media (max-width: 767px) {
-  .desktop-only {
-    display: none;
-  }
+/* Mostrar/esconder elementos conforme o ecrã */
+.desktop-only {
+  display: block;
+}
 
-  .mobile-only {
+.mobile-only {
+  display: none;
+}
+
+
+/* ===========================
+   SCROLL DE LOGOS — MOBILE
+   =========================== */
+
+@media (max-width: 767px) {
+  .logo-scroller {
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
   .logo-track {
-    animation-duration: 50s;
+    width: max-content;
+    min-width: 200%;
+    animation-duration: 40s;
     height: 60px;
     margin: 0 auto;
   }
@@ -98,11 +108,19 @@ body {
   }
 
   .track-1 {
+    display: flex;
     animation-name: scrollLogos;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
   }
 
   .track-2 {
+    display: flex;
     animation-name: scrollLogosReverse;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
   }
 
   @keyframes scrollLogosReverse {
@@ -114,24 +132,16 @@ body {
       transform: translateX(0%);
     }
   }
-}
 
-/* --- Desktop only --- */
-@media (min-width: 768px) {
+  /* Mostrar/esconder no mobile */
   .desktop-only {
-    display: block;
-  }
-
-  .mobile-only {
     display: none;
   }
 
-  .logo-track img {
-    height: 100px;
-    margin: 0 1.5rem;
+  .mobile-only {
+    display: block;
   }
 }
-
 
 .logo-scroller::before,
 .logo-scroller::after {
