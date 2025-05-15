@@ -38,135 +38,43 @@ body {
   display: flex;
 }
 
-/* --- DESKTOP --- */
-
 .logo-scroller {
   position: relative;
   overflow: hidden;
-  /* Só define display no media query para evitar conflitos */
+  display: block;
+  /* apenas uma linha visível */
 }
 
-/* Ocultar por padrão versões mobile e desktop, depois mostrar conforme media */
-.mobile-only {
+.logo-track {
+  display: flex;
+  width: max-content;
+  min-width: 200%;
+  /* garante espaço para duplicação */
+  animation: scrollLogos 30s linear infinite;
+  /* velocidade scroll desktop */
+}
+
+.logo-track img {
+  height: 100px;
+  width: auto;
+  margin: 0 1.5rem;
+  /* margem entre imagens */
+  object-fit: contain;
+}
+
+/* Segunda linha escondida no desktop */
+.track-2 {
   display: none;
 }
 
-.desktop-only {
-  display: block;
-}
-
-/* ===== DESKTOP ===== */
-@media (min-width: 768px) {
-  .mobile-only {
-    display: none;
+/* Animação desktop scroll contínuo */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
   }
 
-  .desktop-only {
-    display: block;
-  }
-
-  .logo-scroller {
-    display: block;
-  }
-
-  .logo-track {
-    display: flex;
-    width: max-content;
-    min-width: 200%;
-    /* espaço para duplicação para scroll infinito */
-    animation: scrollLogos 30s linear infinite;
-  }
-
-  .logo-track img {
-    height: 100px;
-    width: auto;
-    margin: 0 1.5rem;
-    object-fit: contain;
-  }
-
-  /* Não mostrar segunda linha no desktop */
-  .track-2 {
-    display: none;
-  }
-
-  @keyframes scrollLogos {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 767px) {
-  .mobile-only {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
-
-  .desktop-only {
-    display: none;
-  }
-
-  .logo-scroller {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
-
-  .logo-track {
-    width: max-content;
-    min-width: 200%;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    margin: 0 auto;
-    height: 60px;
-  }
-
-  .logo-track img {
-    height: 60px;
-    width: auto;
-    margin: 0 0.8rem;
-    object-fit: contain;
-  }
-
-  /* Linha 1 scroll normal */
-  .track-1 {
-    animation-name: scrollLogos;
-    animation-duration: 25s;
-    display: flex;
-  }
-
-  /* Linha 2 scroll invertido para dinâmica */
-  .track-2 {
-    animation-name: scrollLogosReverse;
-    animation-duration: 15s;
-    display: flex;
-  }
-
-  @keyframes scrollLogos {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  @keyframes scrollLogosReverse {
-    0% {
-      transform: translateX(-50%);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
