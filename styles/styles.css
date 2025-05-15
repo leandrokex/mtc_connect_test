@@ -38,12 +38,6 @@ body {
   display: flex;
 }
 
-.logo-scroller {
-  position: relative;
-  overflow: hidden;
-  display: block;
-
-}
 
 .logo-scroller {
   position: relative;
