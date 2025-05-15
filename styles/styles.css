@@ -50,6 +50,14 @@ body {
   animation: scrollLogos 25s linear infinite;
 }
 
+
+.logo-track img {
+  width: auto;
+  margin: 0 1.5rem;
+  object-fit: contain;
+  height: 40px;
+}
+
 @media (min-width: 768px) {
   .logo-track img {
     height: 60px;
@@ -62,11 +70,6 @@ body {
   }
 }
 
-.logo-track img {
-  width: auto;
-  margin: 0 1.5rem;
-  object-fit: contain;
-}
 
 /* Loop contínuo — desliza metade da largura (porque duplicaste os logos) */
 @keyframes scrollLogos {
