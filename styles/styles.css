@@ -42,35 +42,32 @@ body {
   position: relative;
   overflow: hidden;
   display: block;
-  /* apenas uma linha visível */
+
+}
+
+.logo-scroller {
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+ 
 }
 
 .logo-track {
   display: flex;
   width: max-content;
-  min-width: 200%;
-  /* garante espaço para duplicação */
-  animation: scrollLogos 30s linear infinite;
-  /* velocidade scroll desktop */
+  animation: scrollLogos 20s linear infinite;
 }
 
 .logo-track img {
+  margin: 0 2rem;
   height: 100px;
-  width: auto;
-  margin: 0 1.5rem;
-  /* margem entre imagens */
   object-fit: contain;
 }
 
-/* Segunda linha escondida no desktop */
-.track-2 {
-  display: none;
-}
-
-/* Animação desktop scroll contínuo */
+/* Loop contínuo — desliza metade da largura (porque duplicaste os logos) */
 @keyframes scrollLogos {
   0% {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
 
   100% {
