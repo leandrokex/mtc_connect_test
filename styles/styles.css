@@ -1,0 +1,90 @@
+body {
+  background-image: url('../imgs/fundo_site.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-family: 'DM Sans', sans-serif;
+
+}
+
+.preto {
+  background: #151515;
+}
+
+.azul {
+  background-color: #a8d0ea;
+}
+
+.verde {
+  background-color: #c7f80e;
+}
+
+.verde:hover {
+  background-color: #c7f80e;
+  color: #ffffff;
+}
+
+
+.zoom-hover {
+  transition: transform 0.3s ease;
+}
+
+.zoom-hover:hover {
+  transform: scale(1.10);
+}
+
+
+.fullscreen {
+  height: 100vh;
+  display: flex;
+}
+
+.logo-scroller {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  min-width: 200%;
+  animation: scrollLogos 25s linear infinite;
+}
+
+.logo-track img {
+  margin: 0 2rem;
+  height: 100px;
+  object-fit: contain;
+}
+
+/* Loop contínuo — desliza metade da largura (porque duplicaste os logos) */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-scroller::before,
+.logo-scroller::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  /* aumenta/diminui conforme o efeito desejado */
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-scroller::before {
+  left: 0;
+  background: linear-gradient(to right, #191f1f, rgba(21, 21, 21, 0));
+}
+
+.logo-scroller::after {
+  right: 0;
+  background: linear-gradient(to left, #1a1a1f, rgba(21, 21, 21, 0));
+}

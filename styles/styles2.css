@@ -1,0 +1,56 @@
+.logo-scroller {
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+    /* ajusta conforme o tamanho dos logos */
+    background: #000;
+    /* ou transparente, dependendo do teu design */
+}
+
+.logo-track {
+    display: flex;
+    width: fit-content;
+    animation: scrollLogos 15s linear infinite;
+}
+
+.logo-track img {
+    margin: 0 2rem;
+    height: 100px;
+    /* ajusta conforme necessário */
+    object-fit: contain;
+    filter: brightness(1);
+    /* podes brincar com brilho também */
+}
+
+@keyframes scrollLogos {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Fades nas bordas esquerda e direita */
+.logo-scroller::before,
+.logo-scroller::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    /* largura do fade */
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.logo-scroller::before {
+    left: 0;
+    background: linear-gradient(to right, #000 0%, transparent 100%);
+}
+
+.logo-scroller::after {
+    right: 0;
+    background: linear-gradient(to left, #000 0%, transparent 100%);
+}
