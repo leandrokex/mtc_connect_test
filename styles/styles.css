@@ -42,7 +42,7 @@ body {
 .logo-scroller {
   position: relative;
   overflow: hidden;
-  height: 150px;
+  height: 200px;
 
 }
 
@@ -61,6 +61,8 @@ body {
   flex-shrink: 0;
 
 }
+
+
 
 /* Loop contínuo — desliza metade da largura (porque duplicaste os logos) */
 @keyframes scrollLogos {
